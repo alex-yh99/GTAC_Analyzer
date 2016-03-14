@@ -1,48 +1,9 @@
-import re
-import string
 import sys
 
-import requests
 from bs4 import BeautifulSoup
 
-from conf import proxies
+from scraper.scraper import Scraper
 from util import persist_to_file
-
-
-class Scraper:
-    def __init__(self, url=''):
-        self.url = url
-        self.web_content = ''
-
-    def scrape(self):
-        res = requests.get(self.url, proxies=proxies)
-        if res.status_code == requests.codes.ok:
-            self.web_content = res.text
-
-
-class GlossaryScraper(Scraper):
-    def __init__(self):
-        super().__init__(url='http://www.aptest.com/glossary.html')
-
-    @property
-    @persist_to_file('glossary')
-    def glossaries(self):
-        self.scrape()
-        return list(self.parse())
-
-    def parse(self):
-        soup = BeautifulSoup(self.web_content, 'lxml')
-        paragraphs = soup.find('div', id='main').findAll('p')
-        for p in paragraphs:
-            keyword_node = p.find('b')
-            if hasattr(keyword_node, 'text'):
-                keyword_text = keyword_node.text.strip()
-
-                # Remove punctuation and abbreviations
-                # e.g. 'User Test (UT): ' => 'User Test'
-                reg_obj = re.match(r'([\w\s-]+)[^{}]'.format(re.escape(string.punctuation)), keyword_text)
-                if reg_obj:
-                    yield reg_obj.group().strip()
 
 
 class GTACScraper(Scraper):

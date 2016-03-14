@@ -1,16 +1,24 @@
 ### Simple Web Scraper and Data-Processing practice in Python3
 
+Scrape and analyze web contents from articles on Software Testing:
+
+- Scrape glossaris from [APTest.com](http://www.aptest.com/glossary.html)
 - Scrape all the abstracts of presentations from [GTAC](https://developers.google.com/google-test-automation-conference/) (2014~2016)
-- Find out Software Testing trends
-- Visualize Topic frequency
+- Scrape all the blogs from [Google Test Blog](http://googletesting.blogspot.com/) (2014~2016)
+- Find out Software Testing trends (by visualizing topic frequencies)
+
+![](/demo/gtac_glossaries.png)
+![](/demo/gtac_word_frequencies.png)
+![](/demo/google_test_blog_glossaries.png)
+![](/demo/google_test_blog_word_frequencies.png)
 
 ### Dev
 
-##### 1. Setup virtualenv and install Python dependencies
+##### 1. Setup virtualenv and install Python dependencies (Recommended)
 
 ```
-pyvenv GTAC_Analyzer
-source GTAC_Analyzer/bin/activate
+pyvenv <workspace>
+source <workspace>/bin/activate
 pip install -r requirements.txt
 ```
 
