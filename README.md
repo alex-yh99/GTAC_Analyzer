@@ -2,10 +2,10 @@
 
 Scrape and analyze web contents from articles on Software Testing:
 
-- Scrape glossaris from [APTest.com](http://www.aptest.com/glossary.html)
+- Scrape glossaries from [APTest.com](http://www.aptest.com/glossary.html)
 - Scrape all the abstracts of presentations from [GTAC](https://developers.google.com/google-test-automation-conference/) (2014~2016)
-- Scrape all the blogs from [Google Test Blog](http://googletesting.blogspot.com/) (2014~2016)
-- Find out Software Testing trends (by visualizing topic frequencies)
+- Scrape all the blogs from [Google Test Blog](http://googletesting.blogspot.com/) 
+- Find out Software Testing trends (by visualizing tokenized words/glossaries frequencies)
 
 ![](/demo/gtac_glossaries.png)
 ![](/demo/gtac_word_frequencies.png)
@@ -45,4 +45,14 @@ Edit `conf.py` if you are behind a web proxy.
 python main.py
 ```
 
-> For OSX user with Shadowsocks and proxychains4: `proxychains4 python main.py`
+Each web request results would be cached to `cache` folder, clear the cache by deleting the files.
+
+```
+$ tree cache --du -h
+cache/
+├── [2.5K]  glossary
+├── [996K]  google_test_blog
+└── [ 35K]  gtac
+
+ 1.0M used in 0 directories, 3 files
+```
