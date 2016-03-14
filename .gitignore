@@ -3,6 +3,3 @@
 *.pyc
 
 .idea/
-cache/
-
-*.png
